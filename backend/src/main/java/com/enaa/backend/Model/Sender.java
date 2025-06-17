@@ -1,4 +1,7 @@
 package com.enaa.backend.Model;
 
-public class Sender {
+import jakarta.persistence.Entity;
+
+@Entity
+public class Sender  extends User{
 }
