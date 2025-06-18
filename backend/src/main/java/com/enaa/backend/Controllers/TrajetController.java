@@ -19,8 +19,7 @@ public class TrajetController {
     }
 
     @PostMapping
-    public ResponseEntity<Trajet> createAnnonce(@RequestBody Trajet trajet) {
-        Trajet saved = trajetService.createAnnonce(trajet);
-        return ResponseEntity.ok(saved);
+    public TrajetDto ajouterTrajet(@RequestBody TrajetDto dto){
+        return trajetService.ajouterAnnonce(dto);
     }
 }

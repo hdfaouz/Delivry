@@ -16,7 +16,9 @@ public class TrajetService {
         this.trajetMap = trajetMap;
     }
 
-    public Trajet createAnnonce(Trajet trajet){
-        return trajetRepository.save(trajet);
+    public TrajetDto ajouterAnnonce(TrajetDto dto){
+        Trajet trajet = trajetMap.toEntity(dto);
+        Trajet savedTrajet = trajetRepository.save(trajet);
+        return trajetMap.toDTO(savedTrajet);
     }
 }
