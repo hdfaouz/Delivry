@@ -8,5 +8,5 @@ import java.util.List;
 @Entity
 public class Driver  extends User{
     @OneToMany(mappedBy = "driver")
-    private List<Annonce> annonces;
+    private List<Trajet> annonces;
 }
