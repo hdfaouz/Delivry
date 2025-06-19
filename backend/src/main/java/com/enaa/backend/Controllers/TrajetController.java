@@ -25,5 +25,8 @@ public class TrajetController {
         return trajetService.getAllTrips();
     }
 
-
+    @GetMapping("/{id}")
+    public List<TrajetDto> getTrajetByConducteurId( @PathVariable Long id){
+        return trajetService.getTrajetByConducteur(id);
+    }
 }
