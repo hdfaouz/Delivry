@@ -24,4 +24,6 @@ public class TrajetController {
     public List<TrajetDto> afficherTrajets(){
         return trajetService.getAllTrips();
     }
+
+
 }

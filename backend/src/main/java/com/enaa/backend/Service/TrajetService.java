@@ -27,4 +27,6 @@ public class TrajetService {
         List<Trajet> trajets =trajetRepository.findAll();
         return trajetMap.toDTOs(trajets);
     }
+
+
 }
