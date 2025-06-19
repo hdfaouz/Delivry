@@ -2,13 +2,14 @@ package com.enaa.backend.Dto;
 
 import com.enaa.backend.Model.Driver;
 import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-
+@AllArgsConstructor
+@NoArgsConstructor
 public class TrajetDto {
-    private Long id;
-
     private String lieuDepart;
     private String etapeIntermidiaire;
     private String destinationFinal;
@@ -16,29 +17,6 @@ public class TrajetDto {
     private String dimensionMax;
     private String typeMarchandise;
     private Long capaciteDespo;
-
-    public TrajetDto() {
-    }
-
-    public TrajetDto(Long id, String lieuDepart, String etapeIntermidiaire, String destinationFinal, Date dateDepart, String dimensionMax, String typeMarchandise, Long capaciteDespo, Driver driver) {
-        this.id = id;
-        this.lieuDepart = lieuDepart;
-        this.etapeIntermidiaire = etapeIntermidiaire;
-        this.destinationFinal = destinationFinal;
-        this.dateDepart = dateDepart;
-        this.dimensionMax = dimensionMax;
-        this.typeMarchandise = typeMarchandise;
-        this.capaciteDespo = capaciteDespo;
-        this.driver = driver;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getLieuDepart() {
         return lieuDepart;
@@ -96,14 +74,4 @@ public class TrajetDto {
         this.capaciteDespo = capaciteDespo;
     }
 
-    public Driver getDriver() {
-        return driver;
-    }
-
-    public void setDriver(Driver driver) {
-        this.driver = driver;
-    }
-
-    @ManyToOne
-    private Driver driver;
 }

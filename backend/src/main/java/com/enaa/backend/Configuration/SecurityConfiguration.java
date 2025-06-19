@@ -31,6 +31,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers("/api/v1/auth/**").permitAll()
                 .requestMatchers("/**").permitAll()
+                .requestMatchers("/trajet").hasAuthority("DRIVER")
                 .anyRequest()
                 .authenticated()
                 .and()
