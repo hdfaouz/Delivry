@@ -51,19 +51,7 @@ public class TrajetService {
         trajetRepository.deleteById(id);
     }
 
-//    public TrajetDto update(TrajetDto dto, Long id){
-//        Trajet foundTrip = trajetRepository.findById(id)
-//                .orElseThrow(()-> new RuntimeException("trip not found"));
-//        foundTrip.setLieuDepart(dto.getLieuDepart());
-//        foundTrip.setEtapeIntermidiaire(dto.getEtapeIntermidiaire());
-//        foundTrip.setDestinationFinal(dto.getDestinationFinal());
-//        foundTrip.setDateDepart(dto.getDateDepart());
-//        foundTrip.setDimensionMax(dto.getDimensionMax());
-//        foundTrip.setTypeMarchandise(dto.getTypeMarchandise());
-//        foundTrip.setCapaciteDespo(dto.getCapaciteDespo());
-//        Trajet trip = trajetRepository.save(foundTrip);
-//        return trajetMap.toDTO(trip);
-//    }
+
 
 
 }

@@ -30,4 +30,9 @@ public class DemandeController {
     public void deletDemandeById(@PathVariable Long id){
         demandeService.deletDemand(id);
     }
+    @PutMapping("/{id}")
+   public DemandeDto updateDemand(@RequestBody DemandeDto dto, @PathVariable Long id){
+       return demandeService.update(dto, id);
+   }
 }
+

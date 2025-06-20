@@ -3,7 +3,6 @@ package com.enaa.backend.Dto;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -41,8 +40,8 @@ public class TrajetDto {
         this.destinationFinal = destinationFinal;
     }
 
-    public LocalDate getDateDepart() {
-        return dateDepart;
+    public Date getDateDepart() {
+       return dateDepart;
     }
 
     public void setDateDepart(Date dateDepart) {

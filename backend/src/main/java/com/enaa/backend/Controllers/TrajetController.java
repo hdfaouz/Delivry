@@ -39,8 +39,4 @@ public class TrajetController {
         trajetService.deleteTrajet(id);
     }
 }
-//    @PutMapping("/{id}")
-//    public TrajetDto updateTrip(@RequestBody TrajetDto dto, @PathVariable Long id){
-//        return trajetService.update(dto, id);
-//    }
-//}
+
