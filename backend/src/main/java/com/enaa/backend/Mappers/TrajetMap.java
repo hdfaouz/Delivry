@@ -15,12 +15,5 @@ public interface TrajetMap {
     TrajetDto toDTO(Trajet trajet);
     List<TrajetDto> toDTOs(List<Trajet> trips);
 
-    default Driver mapDriverIdToDriver(Long driverId) {
-        if (driverId == null) {
-            return null;
-        }
-        Driver driver = new Driver();
-        driver.setId(driverId);
-        return driver;
-    }
+
 }
