@@ -17,25 +17,30 @@ public class TrajetController {
     }
 
     @PostMapping
-    public TrajetDto ajouterTrajet(@RequestBody TrajetDto dto){
+    public TrajetDto ajouterTrajet(@RequestBody TrajetDto dto) {
 
         return trajetService.ajouterAnnonce(dto);
     }
 
     @GetMapping
-    public List<TrajetDto> afficherTrajets(){
+    public List<TrajetDto> afficherTrajets() {
 
         return trajetService.getAllTrips();
     }
 
     @GetMapping("/{id}")
-    public List<TrajetDto> getTrajetByConducteurId( @PathVariable Long id){
+    public List<TrajetDto> getTrajetByConducteurId(@PathVariable Long id) {
         return trajetService.getTrajetByConducteur(id);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteTrajetById(@PathVariable Long id){
+    public void deleteTrajetById(@PathVariable Long id) {
 
         trajetService.deleteTrajet(id);
     }
 }
+//    @PutMapping("/{id}")
+//    public TrajetDto updateTrip(@RequestBody TrajetDto dto, @PathVariable Long id){
+//        return trajetService.update(dto, id);
+//    }
+//}

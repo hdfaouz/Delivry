@@ -1,10 +1,9 @@
 package com.enaa.backend.Dto;
 
-import com.enaa.backend.Model.Driver;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -42,7 +41,7 @@ public class TrajetDto {
         this.destinationFinal = destinationFinal;
     }
 
-    public Date getDateDepart() {
+    public LocalDate getDateDepart() {
         return dateDepart;
     }
 
