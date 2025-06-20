@@ -93,6 +93,10 @@ Visualisation des statistiques (nombre d’annonces, taux d’acceptation, utili
 📋 Gestion centralisée des utilisateurs, annonces et demandes
 
 📊 Graphiques interactifs avec Chart.js
+
+## Swagger
+
+http://localhost:8080/swagger-ui/index.html
 _________________________________________________________________________________________
 
 ### **UML**
