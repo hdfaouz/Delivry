@@ -12,16 +12,19 @@ public class TrajetController {
     private final TrajetService trajetService;
 
     public TrajetController(TrajetService trajetService) {
+
         this.trajetService = trajetService;
     }
 
     @PostMapping
     public TrajetDto ajouterTrajet(@RequestBody TrajetDto dto){
+
         return trajetService.ajouterAnnonce(dto);
     }
 
     @GetMapping
     public List<TrajetDto> afficherTrajets(){
+
         return trajetService.getAllTrips();
     }
 
@@ -32,6 +35,7 @@ public class TrajetController {
 
     @DeleteMapping("/{id}")
     public void deleteTrajetById(@PathVariable Long id){
+
         trajetService.deleteTrajet(id);
     }
 }

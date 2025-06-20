@@ -1,11 +1,11 @@
 package com.enaa.backend.Controllers;
 
 import com.enaa.backend.Dto.DemandeDto;
+import com.enaa.backend.Dto.TrajetDto;
 import com.enaa.backend.Service.DemandeService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/demande")
@@ -19,5 +19,10 @@ public class DemandeController {
     @PostMapping
     public DemandeDto ajouterDemand(@RequestBody DemandeDto demandeDto){
         return demandeService.ajouterDemande(demandeDto);
+    }
+
+    @GetMapping
+    public List<DemandeDto> afficherTrajets(){
+        return demandeService.getAllDemande();
     }
 }

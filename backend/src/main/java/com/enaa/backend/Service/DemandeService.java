@@ -1,10 +1,12 @@
 package com.enaa.backend.Service;
 
 import com.enaa.backend.Dto.DemandeDto;
+import com.enaa.backend.Dto.TrajetDto;
 import com.enaa.backend.Mappers.DemandeMap;
 import com.enaa.backend.Model.Demande;
 import com.enaa.backend.Model.Sender;
 import com.enaa.backend.Model.StatutDemand;
+import com.enaa.backend.Model.Trajet;
 import com.enaa.backend.Repositories.DemandeRepository;
 import com.enaa.backend.Repositories.TrajerRepository;
 import com.enaa.backend.Repositories.UserRepository;
@@ -12,6 +14,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class DemandeService {
@@ -40,5 +44,10 @@ public class DemandeService {
             demande.setStatut(StatutDemand.EN_ATTENTE);
         }
         return demandeMap.toDto(addDemande);
+    }
+
+    public List<DemandeDto> getAllDemande(){
+        List<Demande> demandes = demandeRepository.findAll();
+        return demandeMap.toDtos(demandes);
     }
 }
