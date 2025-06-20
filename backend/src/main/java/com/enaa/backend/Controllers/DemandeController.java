@@ -25,4 +25,9 @@ public class DemandeController {
     public List<DemandeDto> afficherTrajets(){
         return demandeService.getAllDemande();
     }
+
+    @DeleteMapping("/{id}")
+    public void deletDemandeById(@PathVariable Long id){
+        demandeService.deletDemand(id);
+    }
 }

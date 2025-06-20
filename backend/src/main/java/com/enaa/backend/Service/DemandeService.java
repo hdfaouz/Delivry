@@ -50,4 +50,8 @@ public class DemandeService {
         List<Demande> demandes = demandeRepository.findAll();
         return demandeMap.toDtos(demandes);
     }
+
+    public void deletDemand(Long id){
+        demandeRepository.deleteById(id);
+    }
 }
