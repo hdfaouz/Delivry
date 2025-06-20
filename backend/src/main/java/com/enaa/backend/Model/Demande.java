@@ -84,14 +84,14 @@ public class Demande {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private StatutDemand statut;
+    private StatutDemand statut = StatutDemand.EN_ATTENTE;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "sender_id", nullable = false)
+    @JoinColumn(name = "sender_id")
     private Sender sender;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "trajet_id", nullable = false)
+    @JoinColumn(name = "trajet_id")
     private Trajet trajet;
 
 

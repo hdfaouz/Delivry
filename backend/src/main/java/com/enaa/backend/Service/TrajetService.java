@@ -49,4 +49,6 @@ public class TrajetService {
     public void deleteTrajet(Long id){
         trajetRepository.deleteById(id);
     }
+
+
 }

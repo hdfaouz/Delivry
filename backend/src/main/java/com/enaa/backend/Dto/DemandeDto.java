@@ -1,6 +1,7 @@
 package com.enaa.backend.Dto;
 
 
+import com.enaa.backend.Model.StatutDemand;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -12,9 +13,24 @@ public class DemandeDto {
     private String dimensionsColis;
     private double poidsColis;
     private String typeColis;
+    private Long idtrajet;
+    private StatutDemand statut;
 
+    public StatutDemand getStatut() {
+        return statut;
+    }
 
+    public void setStatut(StatutDemand statutDemand) {
+        this.statut = statutDemand;
+    }
 
+    public Long getIdtrajet() {
+        return idtrajet;
+    }
+
+    public void setIdtrajet(Long idtrajet) {
+        this.idtrajet = idtrajet;
+    }
 
     public String getDimensionsColis() {
         return dimensionsColis;

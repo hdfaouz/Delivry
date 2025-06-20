@@ -6,7 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -104,4 +105,6 @@ public class Trajet {
     @ManyToOne
     private Driver driver;
 
+    @OneToMany(mappedBy = "trajet", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Demande> requests = new ArrayList<>();
 }
