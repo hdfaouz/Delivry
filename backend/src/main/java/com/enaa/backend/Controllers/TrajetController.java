@@ -29,4 +29,9 @@ public class TrajetController {
     public List<TrajetDto> getTrajetByConducteurId( @PathVariable Long id){
         return trajetService.getTrajetByConducteur(id);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteTrajetById(@PathVariable Long id){
+        trajetService.deleteTrajet(id);
+    }
 }
