@@ -1,0 +1,45 @@
+a{
+  color: white;
+}
+#menuTitre{
+  font-size: medium;
+  margin-right: 20px;
+}
+.side{
+  background-color: #387a8f;
+  width: 180px;
+}
+.side-nav-item{
+  display: flex;
+  flex-direction: column;
+
+}
+.side-menu-item{
+  color: white !important;
+  margin-top: 20px;
+}
+.main-content{
+  margin: 20px;
+}
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-toolbar{
+  height: 60px;
+}
+
+@media (min-width: 900px) {
+  #menuicons{
+    display: none;
+  }
+  .side{
+    display: none;
+  }
+}
+@media (max-width: 900px) {
+  .top-menu-item{
+    display: none;
+  }
+}
+

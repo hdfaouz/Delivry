@@ -1,9 +1,12 @@
-import {Component, Inject, PLATFORM_ID} from '@angular/core';
-import {RouterLink} from "@angular/router";
-import {CommonModule, isPlatformBrowser} from "@angular/common";
+import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
+import {RouterLink, RouterOutlet} from "@angular/router";
+import {CommonModule, isPlatformBrowser, NgIf} from "@angular/common";
 import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatButtonModule} from "@angular/material/button";
+import {MatAnchor, MatButtonModule, MatIconButton} from "@angular/material/button";
 import {HttpClientModule} from "@angular/common/http";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatIcon} from "@angular/material/icon";
+import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 
 @Component({
   selector: 'app-navbar',
@@ -13,12 +16,24 @@ import {HttpClientModule} from "@angular/common/http";
     CommonModule,
     MatToolbarModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIcon,
+    MatIconButton,
+    MatAnchor,
+    RouterOutlet,
+    MatMenu,
+    MatMenuTrigger,
+    MatMenuItem,
+    NgIf
   ],
+
+
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit{
   role: string = '';
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
@@ -32,6 +47,9 @@ export class NavbarComponent {
       localStorage.removeItem('role');
       location.reload(); // Ou navigate vers /login
     }
+  }
+
+  ngOnInit(): void {
   }
 
 }

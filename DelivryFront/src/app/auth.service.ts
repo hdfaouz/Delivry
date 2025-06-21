@@ -31,11 +31,14 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
+
   login(credentials: { email: string; password: string }): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.apiUrl}/authentification`, credentials);
+    return this.http.post<LoginResponse>(`${this.apiUrl}/authenticate`, credentials);
   }
 
   register(data: RegisterRequest): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, data);
   }
+
+
 }

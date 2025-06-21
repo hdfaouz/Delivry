@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
+
   ngOnInit(): void {
     this.error = '';
     this.successMsg = '';
@@ -63,37 +64,35 @@ export class LoginComponent implements OnInit {
     return this.FormLogin.get('password');
   }
 
-  onSubmit(): void {
-    this.error = '';
-    this.successMsg = '';
-    this.loading = true;
-
+  onSumbit():void{
+    this.error='';
+    this.successMsg='';
+    this.loading=true;
     if (this.FormLogin.valid) {
-      const dataLogin = this.FormLogin.value;
+      console.log(this.FormLogin.value);
 
+      const dataLogin = this.FormLogin.value;
       this.authService.login(dataLogin).subscribe({
         next: (response) => {
           localStorage.setItem('token', response.token);
           localStorage.setItem('role', response.role);
 
-          if (response.role.toLowerCase() === 'admin') {
-            alert('Bienvenue admin');
+          //rediriger l'utilisateur selon leur role
+          if(response.role === 'Admin'){
+            alert("welcome admin")
             // this.router.navigate(['/admin-dashboard']);
-          } else {
-            alert('Bienvenue utilisateur');
-            // this.router.navigate(['/user-dashboard']);
+          }else {
+            alert("welcome client")
+            //this.router.navigate(['user-dashboard']);
           }
-
-          this.loading = false;
         },
-        error: (err) => {
-          this.error = err?.error?.message || 'Échec de la connexion';
-          this.loading = false;
+        error: (err)=>{
+          this.error = typeof err === 'string' ? err : 'Login failed';
         }
-      });
-    } else {
-      this.loading = false;
-      this.error = 'Veuillez remplir correctement le formulaire.';
+      })
     }
+
+
+
   }
 }
