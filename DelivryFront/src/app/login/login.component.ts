@@ -1,58 +1,99 @@
-import { Component } from '@angular/core';
-import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
-import {MatIconModule} from "@angular/material/icon";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatCardModule} from "@angular/material/card";
-import {MatButtonModule} from "@angular/material/button";
-import {MatInputModule} from "@angular/material/input";
-import {Router, RouterModule} from "@angular/router";
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {CommonModule} from "@angular/common";
-import {AuthService} from "../Services/auth.service";
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
+
+// Angular Material modules
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule,
+  imports: [
+    CommonModule,
+    FormsModule,
     ReactiveFormsModule,
-    RouterModule,
+    HttpClientModule,  // <-- important
+    MatFormFieldModule,
     MatInputModule,
+    MatIconModule,
     MatButtonModule,
     MatCardModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatSnackBarModule],
+    MatProgressSpinnerModule,
+  ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup;
-  hidePassword = true;
+  FormLogin: FormGroup;
+  loading = false;
+  error = '';
+  successMsg = '';
 
   constructor(
-    private fb: FormBuilder,
+    private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router,
-    private snackBar: MatSnackBar
+    private router: Router
   ) {
-    this.loginForm = this.fb.group({
+    this.FormLogin = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
   }
 
-  onSubmit() {
-    if (this.loginForm.valid) {
-      this.authService.login(this.loginForm.value).subscribe({
-        next: () => {
-          this.snackBar.open('Login successful', 'Close', {duration: 3000});
-          this.router.navigate(['/events']);
+  ngOnInit(): void {
+    this.error = '';
+    this.successMsg = '';
+  }
+
+  get email() {
+    return this.FormLogin.get('email');
+  }
+
+  get password() {
+    return this.FormLogin.get('password');
+  }
+
+  onSubmit(): void {
+    this.error = '';
+    this.successMsg = '';
+    this.loading = true;
+
+    if (this.FormLogin.valid) {
+      const dataLogin = this.FormLogin.value;
+
+      this.authService.login(dataLogin).subscribe({
+        next: (response) => {
+          localStorage.setItem('token', response.token);
+          localStorage.setItem('role', response.role);
+
+          if (response.role.toLowerCase() === 'admin') {
+            alert('Bienvenue admin');
+            // this.router.navigate(['/admin-dashboard']);
+          } else {
+            alert('Bienvenue utilisateur');
+            // this.router.navigate(['/user-dashboard']);
+          }
+
+          this.loading = false;
         },
-        error: () => {
-          this.snackBar.open('Invalid credentials', 'Close', {duration: 3000});
+        error: (err) => {
+          this.error = err?.error?.message || 'Échec de la connexion';
+          this.loading = false;
         }
       });
+    } else {
+      this.loading = false;
+      this.error = 'Veuillez remplir correctement le formulaire.';
     }
   }
 }

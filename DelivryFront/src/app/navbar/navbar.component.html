@@ -1,0 +1,25 @@
+<mat-toolbar color="primary" class="navbar">
+  <span class="logo">🚚 DeliveryMatch</span>
+
+  <span class="spacer"></span>
+
+  <ng-container *ngIf="role === 'EXPEDITEUR'">
+    <a mat-button routerLink="/recherche-trajet">Rechercher Trajet</a>
+    <a mat-button routerLink="/mes-demandes">Mes Demandes</a>
+  </ng-container>
+
+  <ng-container *ngIf="role === 'CONDUCTEUR'">
+    <a mat-button routerLink="/mes-annonces">Mes Annonces</a>
+    <a mat-button routerLink="/demandes-reçues">Demandes Reçues</a>
+    <a mat-button routerLink="/historique-trajets">Historique</a>
+  </ng-container>
+
+  <ng-container *ngIf="role === 'ADMIN'">
+    <a mat-button routerLink="/dashboard">Dashboard</a>
+    <a mat-button routerLink="/gestion-utilisateurs">Utilisateurs</a>
+    <a mat-button routerLink="/statistiques">Statistiques</a>
+  </ng-container>
+
+  <button mat-button routerLink="/profil">Mon Profil</button>
+  <button mat-button color="warn" (click)="logout()">Déconnexion</button>
+</mat-toolbar>

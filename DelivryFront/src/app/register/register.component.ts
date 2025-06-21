@@ -1,66 +1,60 @@
-import { Component } from '@angular/core';
-import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
-import {MatIconModule} from "@angular/material/icon";
-import {MatSelectModule} from "@angular/material/select";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatCardModule} from "@angular/material/card";
-import {MatButtonModule} from "@angular/material/button";
-import {MatInputModule} from "@angular/material/input";
-import {Router, RouterModule} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {CommonModule} from "@angular/common";
-import {AuthService} from "../Services/auth.service";
+import { RouterLink} from "@angular/router";
+import { Router } from '@angular/router'; // Correction de l'import ici
+import {NgIf} from "@angular/common";
+import {AuthService, RegisterRequest} from "../auth.service";
+import {HttpClientModule} from "@angular/common/http";
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    RouterModule,
-    MatInputModule,
-    MatButtonModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatIconModule,
-    MatSnackBarModule
-  ],
+  imports: [ReactiveFormsModule,
+    RouterLink,
+    HttpClientModule,
+    NgIf],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
-export class RegisterComponent {
-  registerForm: FormGroup;
-  hidePassword = true;
-  roles = ['SENDER', 'DRIVER'];
+export class RegisterComponent implements OnInit{
+  register:FormGroup;
+  loading=false;
+  erreur='';
+  success='';
 
-  constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private router: Router,
-    private snackBar: MatSnackBar
-  ) {
-    this.registerForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(3)]],
-      role: ['SENDER', Validators.required]
-    });
+  constructor(private form:FormBuilder, private auth:AuthService,private router:Router){
+
+      this.register = this.form.group({
+        name: ['', [Validators.required]],  // <- ajouter ici
+        email: ['', [Validators.required]],
+        password: ['', [Validators.required]],
+        role: ['', [Validators.required]]
+      });
+
   }
 
+  ngOnInit(): void {
+    this.erreur='';
+      this.success=''
+  }
   onSubmit() {
-    if (this.registerForm.valid) {
-      this.authService.register(this.registerForm.value).subscribe({
-        next: () => {
-          this.snackBar.open('Registration successful', 'Close', { duration: 3000 });
-          this.router.navigate(['/login']);
+    if (this.register.valid) {
+      console.log(this.register.value);
+      const data :  RegisterRequest= this.register.value;
+      this.auth.register(data).subscribe({
+        next : response =>{
+          this.success = 'Registration successful';
+          this.erreur = '';
+          this.register.reset();
+          //pour rediriger après 1,5 second vers login
+          setTimeout(()=> this.router.navigate(['/login']),1500);
         },
-        error: () => {
-          this.snackBar.open('Registration failed', 'Close', { duration: 3000 });
+        error: err=>{
+          this.erreur = err || 'Registration failed';
+          this.success='';
         }
       });
+
     }
   }
-
-
 }

@@ -1,52 +1,32 @@
-<div class="container">
-  <mat-card class="login-card">
-    <mat-card-header>
-      <mat-card-title>Connexion</mat-card-title>
-    </mat-card-header>
+<mat-card class="login-card">
+  <mat-card-header>
+    <mat-card-title>Connexion</mat-card-title>
+  </mat-card-header>
 
-    <mat-card-content>
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Email</mat-label>
-          <input matInput formControlName="email" type="email">
-          <mat-icon matSuffix>email</mat-icon>
+  <mat-card-content>
+    <form [formGroup]="FormLogin" (ngSubmit)="onSubmit()">
+      <!-- Champ Email -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Votre email" formControlName="email" type="email" />
+        <mat-error *ngIf="email?.hasError('required')">L'email est requis</mat-error>
+      </mat-form-field>
 
-          <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
-            L'email est obligatoire
-          </mat-error>
-          <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
-            Veuillez entrer un email valide
-          </mat-error>
-        </mat-form-field>
+      <!-- Champ Mot de passe -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Mot de passe</mat-label>
+        <input matInput placeholder="Votre mot de passe" formControlName="password" type="password" />
+        <mat-error *ngIf="password?.hasError('required')">Le mot de passe est requis</mat-error>
+      </mat-form-field>
 
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Mot de passe</mat-label>
-          <input matInput formControlName="password"
-                 [type]="hidePassword ? 'password' : 'text'">
+      <!-- Message d'erreur -->
+      <div *ngIf="error" class="error-message">{{ error }}</div>
 
-          <button mat-icon-button matSuffix
-                  (click)="hidePassword = !hidePassword"
-                  type="button">
-            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
-          </button>
-
-          <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
-            Le mot de passe est obligatoire
-          </mat-error>
-        </mat-form-field>
-
-        <button mat-raised-button color="primary"
-                type="submit"
-                [disabled]="!loginForm.valid"
-                class="full-width">
-          Se connecter
-        </button>
-      </form>
-    </mat-card-content>
-
-    <mat-card-actions>
-      <span>Vous n'avez pas de compte ? </span>
-      <a mat-button color="primary" routerLink="/register">S'inscrire</a>
-    </mat-card-actions>
-  </mat-card>
-</div>
+      <!-- Bouton -->
+      <button mat-raised-button color="primary" class="full-width" type="submit" [disabled]="loading">
+        Connexion
+        <mat-progress-spinner *ngIf="loading" diameter="20" mode="indeterminate"></mat-progress-spinner>
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>
