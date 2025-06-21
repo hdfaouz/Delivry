@@ -54,14 +54,5 @@ public class DemandeService {
     public void deletDemand(Long id){
         demandeRepository.deleteById(id);
     }
-        public DemandeDto update(DemandeDto dto, Long id){
-        Demande foundDemand = demandeRepository.findById(id)
-                .orElseThrow(()-> new RuntimeException("trip not found"));
-            foundDemand.setTypeColis(dto.getTypeColis());
-            foundDemand.setStatut(dto.getStatut());
-            foundDemand.setDimensionsColis(dto.getDimensionsColis());
-            foundDemand.setPoidsColis(dto.getPoidsColis());
-        Demande demande= demandeRepository.save(foundDemand );
-       return demandeMap.toDto(demande);
-    }
+
 }
