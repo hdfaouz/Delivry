@@ -104,6 +104,6 @@ ________________________________________________________________________________
 **_Diagramme de Classe_**
 ![Diagrammes](UML/Diagramme%20de%20classe.png)
 **_Diagramme de Cas d'utilisation_**
-![Diagrammes](UML/Diagramme%20de%20classe.png)
+![Diagrammes](UML/Diagramme%20de%20cas%20d'utilisation.png)
 **_Diagramme de séquence_**
 ![Diagrammes](UML/séquence.png)
