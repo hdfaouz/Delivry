@@ -1,6 +1,6 @@
-import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {RouterLink, RouterOutlet} from "@angular/router";
-import {CommonModule, isPlatformBrowser, NgIf} from "@angular/common";
+import {CommonModule, NgIf} from "@angular/common";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatAnchor, MatButtonModule, MatIconButton} from "@angular/material/button";
 import {HttpClientModule} from "@angular/common/http";
@@ -34,20 +34,6 @@ import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent implements OnInit{
-  role: string = '';
-
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
-    if (isPlatformBrowser(this.platformId)) {
-      this.role = localStorage.getItem('role') ?? '';
-    }
-  }
-
-  logout() {
-    if (isPlatformBrowser(this.platformId)) {
-      localStorage.removeItem('role');
-      location.reload(); // Ou navigate vers /login
-    }
-  }
 
   ngOnInit(): void {
   }
