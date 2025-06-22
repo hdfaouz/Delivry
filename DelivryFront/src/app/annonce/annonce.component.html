@@ -1,0 +1,46 @@
+<div class="w-full max-w-xl mx-auto mt-10 p-6 rounded shadow bg-white">
+  <h2 class="text-xl font-bold mb-4 text-center">Créer une annonce de trajet</h2>
+
+  <form [formGroup]="trajetForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill" class="w-full mb-3">
+      <mat-label>Lieu de départ</mat-label>
+      <input matInput formControlName="departure" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full mb-3">
+      <mat-label>Destination</mat-label>
+      <input matInput formControlName="destination" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full mb-3">
+      <mat-label>Étapes intermédiaires</mat-label>
+      <input matInput formControlName="stops" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full mb-3">
+      <mat-label>Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full mb-3">
+      <mat-label>Type de marchandise</mat-label>
+      <input matInput formControlName="typeMarchandise" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full mb-3">
+      <mat-label>Dimensions maximales</mat-label>
+      <input matInput formControlName="dimensionsMax" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="w-full mb-4">
+      <mat-label>Capacité disponible</mat-label>
+      <input matInput type="number" formControlName="capaciteDispo" />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" class="w-full" type="submit" [disabled]="trajetForm.invalid">
+      Publier l’annonce
+    </button>
+  </form>
+</div>

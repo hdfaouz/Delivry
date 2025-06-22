@@ -1,45 +1,47 @@
-a{
-  color: white;
-}
-#menuTitre{
-  font-size: medium;
+/* Logo styling */
+.logo-container {
+  display: flex;
+  align-items: center;
   margin-right: 20px;
 }
-.side{
-  background-color: #387a8f;
-  width: 180px;
-}
-.side-nav-item{
-  display: flex;
-  flex-direction: column;
 
+.logo-svg {
+  height: 40px;
+  width: auto;
+  margin-right: 10px;
 }
-.side-menu-item{
-  color: white !important;
-  margin-top: 20px;
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #3f51b5;
 }
-.main-content{
-  margin: 20px;
-}
+
+/* Spacer for toolbar */
 .spacer {
   flex: 1 1 auto;
 }
 
-mat-toolbar{
-  height: 60px;
+/* Side menu styling */
+.side-nav-item {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
 }
 
-@media (min-width: 900px) {
-  #menuicons{
-    display: none;
-  }
-  .side{
-    display: none;
-  }
-}
-@media (max-width: 900px) {
-  .top-menu-item{
-    display: none;
-  }
+.side-menu-item {
+  text-align: left;
+  padding: 10px 15px;
+  margin: 5px 0;
+  border-radius: 4px;
+  transition: all 0.3s;
 }
 
+.side-menu-item:hover {
+  background-color: rgba(175, 238, 238, 0.3);
+}
+
+.main-content {
+  padding: 20px;
+  min-height: calc(100vh - 64px);
+}

@@ -1,4 +1,4 @@
-/* Style de base */
+
 .signup-container {
   display: flex;
   justify-content: center;
@@ -14,7 +14,7 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 450px;
-  padding: 40px;
+  padding: 70px;
 }
 
 .signup-header {
