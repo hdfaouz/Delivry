@@ -41,10 +41,7 @@ public class TrajetService {
     }
 
 
-    public List<TrajetDto> getTrajetByConducteur(Long id){
-        List<Trajet> trajets = trajetRepository.findTrajetByDriverId(id);
-        return trajetMap.toDTOs(trajets);
-    }
+
 
     public void deleteTrajet(Long id){
 

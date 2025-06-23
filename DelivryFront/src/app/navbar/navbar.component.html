@@ -5,12 +5,8 @@
 
   <span id="menuTitre" class="ms-5 " ><a mat-button class="top-menu-item" routerLink="/index/home">DelivryMatch</a></span>
   <a mat-button class="top-menu-item" routerLink="/home">Home</a>
-  <a mat-button class="top-menu-item"   routerLink="/annonce" [matMenuTriggerFor]="importMenu">Annonce
-    <mat-icon iconPositionEndn>arrow_drop_down</mat-icon></a>
-  <mat-menu #importMenu="matMenu">
-    <button mat-menu-item routerLink="/annonce" *ngIf="role.includes('CONDUCTEUR')">Ajoute</button>
-    <button mat-menu-item routerLink="/annonce">Afficher</button>
-  </mat-menu>
+    <a mat-button class="top-menu-item" routerLink="/annonce">Annonce</a>
+
   <a mat-button class="top-menu-item" routerLink="/index">Demmande</a>
   <span class="spacer"></span>
 

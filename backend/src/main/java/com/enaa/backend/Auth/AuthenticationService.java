@@ -29,7 +29,7 @@ public class AuthenticationService {
     public AuthenticationResponse register(RegisterRequest request) {
        User user;
 
-        // Decide which subclass to create based on role
+
         switch (request.getRole()) {
             case ADMIN -> user = new Admin();
             case DRIVER -> user = new Driver();
@@ -38,12 +38,12 @@ public class AuthenticationService {
             default -> throw new IllegalArgumentException("Invalid role: " + request.getRole());
         }
 
-        user.setName(request.getName()); // or request.getUsername()
+        user.setName(request.getName());
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setRole(request.getRole());
 
-        userRepository.save(user); // use appropriate repository for the subclass
+        userRepository.save(user);
 
         String jwtToken = jwtService.generateToken(user);
 

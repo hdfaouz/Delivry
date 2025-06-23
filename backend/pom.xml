@@ -52,7 +52,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.10.0</version>
+            <version>5.10.0</version> <!-- ou celle que tu veux -->
             <scope>test</scope>
         </dependency>
         <dependency>

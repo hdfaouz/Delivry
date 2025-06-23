@@ -23,7 +23,7 @@ public class Trajet {
     private String etapeIntermidiaire;
     private String destinationFinal;
     @Column(name = "date_depart", nullable = false)
-    @JsonFormat(pattern = "d-M-yyyy")
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate dateDepart;
     @Column(name = "dimension_max")
     private String dimensionMax;

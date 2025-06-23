@@ -7,12 +7,14 @@ import {AnnonceComponent} from "./annonce/annonce.component";
 
 
 
+
 export const routes: Routes = [
   {path:"",component:LoginComponent},
   {path:"register",component:RegisterComponent},
   {path:"login",component:LoginComponent},
   {path:"home",component:HomeComponent},
-  {path:"annonce",component:AnnonceComponent}
+  {path:"annonce",component:AnnonceComponent},
+
 
 
 ];

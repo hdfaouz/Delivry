@@ -14,4 +14,8 @@ export class TrajetService {
   createTrajet(data: any): Observable<any> {
     return this.http.post(this.baseUrl, data);
   }
+  getAll(): Observable<any[]> {
+    return this.http.get<any[]>(this.baseUrl);
+  }
+
 }

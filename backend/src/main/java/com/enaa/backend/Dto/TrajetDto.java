@@ -5,8 +5,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 public class TrajetDto {
     private String lieuDepart;
     private String etapeIntermidiaire;
@@ -15,6 +14,19 @@ public class TrajetDto {
     private String dimensionMax;
     private String typeMarchandise;
     private Long capaciteDespo;
+
+    public TrajetDto() {
+    }
+
+    public TrajetDto(String lieuDepart, String etapeIntermidiaire, String destinationFinal, Date dateDepart, String dimensionMax, String typeMarchandise, Long capaciteDespo) {
+        this.lieuDepart = lieuDepart;
+        this.etapeIntermidiaire = etapeIntermidiaire;
+        this.destinationFinal = destinationFinal;
+        this.dateDepart = dateDepart;
+        this.dimensionMax = dimensionMax;
+        this.typeMarchandise = typeMarchandise;
+        this.capaciteDespo = capaciteDespo;
+    }
 
     public String getLieuDepart() {
         return lieuDepart;

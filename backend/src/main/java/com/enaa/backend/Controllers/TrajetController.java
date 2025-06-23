@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/trajet")
 public class TrajetController {
     private final TrajetService trajetService;
@@ -28,10 +29,6 @@ public class TrajetController {
         return trajetService.getAllTrips();
     }
 
-    @GetMapping("/{id}")
-    public List<TrajetDto> getTrajetByConducteurId(@PathVariable Long id) {
-        return trajetService.getTrajetByConducteur(id);
-    }
 
     @DeleteMapping("/{id}")
     public void deleteTrajetById(@PathVariable Long id) {

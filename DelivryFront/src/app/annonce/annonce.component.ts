@@ -64,6 +64,7 @@ export class AnnonceComponent {
     this.trajetService.createTrajet(payload).subscribe({
       next: () => {
         alert('Annonce ajoutée avec succès');
+
         this.router.navigate(['/driver/trips']);
       },
       error: (err) => {
